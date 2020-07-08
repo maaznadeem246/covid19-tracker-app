@@ -21,7 +21,7 @@ export default function CountrySelector({ countryReader}){
         setCountry(event.target.value);
     };
 
-    const countryList = countryReader()
+    const {countries} = countryReader()
     
 
     
@@ -37,8 +37,8 @@ export default function CountrySelector({ countryReader}){
                 onChange={handleChange}
             >
                 <MenuItem value="all">All</MenuItem>
-                {countryList.map(v=>(
-                    <MenuItem value={v.countryInfo.iso3}>{v.country}</MenuItem>
+                {countries.map(v=>(
+                    <MenuItem value={v.iso2}>{v.name}</MenuItem>
                 ))}
             </Select>
         </FormControl>
