@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { Select, FormControl, InputLabel, MenuItem, makeStyles } from "@material-ui/core"
-import {countries} from "countries-list"
+
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -21,7 +21,7 @@ export default function CountrySelector({ countryReader}){
         setCountry(event.target.value);
     };
 
-    const {countries} = countryReader()
+    const countries = countryReader()
     
 
     

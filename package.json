@@ -11,6 +11,7 @@
     "countries-list": "^2.5.4",
     "react": "0.0.0-experimental-f6b8d31a7",
     "react-chartjs-2": "^2.9.0",
+    "react-countup": "^4.3.3",
     "react-dom": "0.0.0-experimental-f6b8d31a7",
     "react-scripts": "3.4.1"
   },
