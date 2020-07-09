@@ -1,5 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -47,5 +51,5 @@
 @media all and (max-width: 425px) {
   .chartCcontainer{
         height:200px;
-}
+  }
 }

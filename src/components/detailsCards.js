@@ -4,14 +4,14 @@ import CountUp  from "react-countup"
 
 const useStyles = makeStyles((theme)=>({
     mainGrid:{
-        padding:'10px 10px 10px 10px',
+        padding:'20px 10px 10px 10px',
         [theme.breakpoints.down('sm')]: {
             width: '80%',
             margin:'auto',
+            paddingTop:'10px'
         },
         [theme.breakpoints.between('sm', 'md')]: {
         width: '100%',
-
         }
     },
     root: {

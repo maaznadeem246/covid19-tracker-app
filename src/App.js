@@ -1,7 +1,7 @@
 import React, { Suspense, SuspenseList ,useState, useCallback} from 'react';
 import './App.css';
 import {MainHeading,CountrySelector,DetailsCards, DetailsChart} from "./components"
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { dataReader} from "./api/dataReader"
 import { getAllCountries, getTotalDetails, dailyDate } from "./api/covidApi"
 
@@ -36,18 +36,18 @@ function App() {
           <MainHeading />
         </Grid>
         <Grid item justify="center"  container xs={12}>
-          <Suspense fallback={<h1>Loading Countries</h1>} >
+            <Suspense fallback={<CircularProgress />} >
             <CountrySelector  country={country} handleChange={handleChange} countryReader={countryReader} />
           </Suspense>
         </Grid>
         <Grid item justify="center" container>
           <Grid item justify="center" container xs={12} sm={12} md={5} lg={5}>
-            <Suspense fallback={<h1>Loading Detials</h1>} >
+              <Suspense fallback={<CircularProgress />} >
               <DetailsCards  totalDetailsReader={totalDetailsReader} />
             </Suspense>
           </Grid>
           <Grid item justify="center" container xs={12} sm={12} md={7} lg={7}>
-            <Suspense fallback={<h1>Loading Chart</h1>} >
+              <Suspense fallback={<CircularProgress />} >
               <DetailsChart dailyDateReader={dailyDateReader} />
             </Suspense>
           </Grid>  

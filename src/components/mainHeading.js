@@ -1,10 +1,21 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, makeStyles } from '@material-ui/core';
+
+
+const useStyles = makeStyles({
+        root:{
+        fontFamily: "'Varela Round', sans- serif",
+        padding:20,
+        fontSize:42,
+
+
+        }
+})
 
 const  MainHeading = () => {
-
+    const classes = useStyles()
     return (
-        <Typography align="center" variant="h5">
+        <Typography className={classes.root} align="center" variant="h5">
             Covid19 Tracker 
         </Typography>
     )
