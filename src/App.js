@@ -1,4 +1,4 @@
-import React, { Suspense ,useState, useCallback} from 'react';
+import React, { Suspense, SuspenseList ,useState, useCallback} from 'react';
 import './App.css';
 import {MainHeading,CountrySelector,DetailsCards, DetailsChart} from "./components"
 import { Grid } from '@material-ui/core';
@@ -30,6 +30,7 @@ function App() {
 
   return (
     <div >
+      <SuspenseList revealOrder="forwards" >
       <Grid container >
         <Grid item justify="center" xs={12}>
           <MainHeading />
@@ -40,12 +41,12 @@ function App() {
           </Suspense>
         </Grid>
         <Grid item justify="center" container>
-          <Grid item justify="center" container xs={12} sm={12} md={4} lg={4}>
+          <Grid item justify="center" container xs={12} sm={12} md={5} lg={5}>
             <Suspense fallback={<h1>Loading Detials</h1>} >
               <DetailsCards  totalDetailsReader={totalDetailsReader} />
             </Suspense>
           </Grid>
-          <Grid item justify="center" container xs={12} sm={12} md={8} lg={8}>
+          <Grid item justify="center" container xs={12} sm={12} md={7} lg={7}>
             <Suspense fallback={<h1>Loading Chart</h1>} >
               <DetailsChart dailyDateReader={dailyDateReader} />
             </Suspense>
@@ -53,6 +54,7 @@ function App() {
         </Grid>
         
       </Grid>
+      </SuspenseList>
     </div>
   );
 }

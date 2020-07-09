@@ -5,8 +5,20 @@ import { Select, FormControl, InputLabel, MenuItem, makeStyles } from "@material
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120,
-        padding:20,    
+        width:300,
+        padding:10,
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+        },
+        [theme.breakpoints.up('sm')]: {
+            width: 300,
+        },    
+    },
+    selectCountry:{
+        
+        '&>div':{
+            padding: 10,
+        }
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -26,17 +38,19 @@ export default function CountrySelector({ countryReader,handleChange,country }){
     // console.log(Object.values(countries).length)
     return (
         
-        <FormControl className={classes.formControl}>
+        <FormControl variant="outlined" className={classes.formControl}>
             {/* <InputLabel id="countrySelectLabel">Country</InputLabel> */}
             <Select
                 labelId="countrySelectLabel"
                 id="countrySelects"
                 value={country}
                 onChange={handleChange}
+                className={classes.selectCountry}
             >
-                <MenuItem value="all">All</MenuItem>
+                <MenuItem  value="all">All</MenuItem>
+                
                 {countries.map(v=>(
-                    <MenuItem value={v.iso2}>{v.name}</MenuItem>
+                    <MenuItem className={classes.selectCountry} value={v.iso2}>{v.name}</MenuItem>
                 ))}
             </Select>
         </FormControl>

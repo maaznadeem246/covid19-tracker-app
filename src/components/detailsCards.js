@@ -2,9 +2,17 @@ import React from 'react';
 import { Typography,Grid, Paper, Card, CardContent, makeStyles } from '@material-ui/core';
 import CountUp  from "react-countup"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     mainGrid:{
-        padding:'10px 10px 10px 10px'
+        padding:'10px 10px 10px 10px',
+        [theme.breakpoints.down('sm')]: {
+            width: '80%',
+            margin:'auto',
+        },
+        [theme.breakpoints.between('sm', 'md')]: {
+        width: '100%',
+
+        }
     },
     root: {
 
@@ -21,7 +29,7 @@ const useStyles = makeStyles({
     pos: {
         marginBottom: 12,
     },
-});
+}));
 
 
 function capFirstLe(string) {

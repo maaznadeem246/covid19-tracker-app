@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.chartCcontainer{
+        position: relative;
+        margin: auto;
+        height:400px;
+}
+
+@media all and (max-width: 425px) {
+  .chartCcontainer{
+        height:200px;
+}
+}
