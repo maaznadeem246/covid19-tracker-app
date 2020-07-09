@@ -1,10 +1,13 @@
 import React from 'react';
-import { Typography,Grid, Card, CardContent, makeStyles } from '@material-ui/core';
+import { Typography,Grid, Paper, Card, CardContent, makeStyles } from '@material-ui/core';
 import CountUp  from "react-countup"
 
 const useStyles = makeStyles({
+    mainGrid:{
+        padding:'10px 10px 10px 10px'
+    },
     root: {
-        minWidth: 200,
+
 
     },
     bullet: {
@@ -36,6 +39,7 @@ const CardDet = ({classes, name, value, date}) => (
                     start={0}
                     end={value}
                     duration={3}
+                    delay={0.2}
                     separator=","
                 />
             </Typography>
@@ -48,9 +52,10 @@ const CardDet = ({classes, name, value, date}) => (
 
 const DetailsCard = ({totalDetailsReader}) => {
 
+    
     const classes = useStyles();
 
-    const totalDetails = totalDetailsReader()
+    const totalDetails = totalDetailsReader('all')
   
     const values = Object.values(totalDetails.details)
     const keys = Object.keys(totalDetails.details)
@@ -59,10 +64,11 @@ const DetailsCard = ({totalDetailsReader}) => {
 
     return (
         <div>
-            <Grid container justify="center" spacing={3}>
+            <Grid container justify="center" className={classes.mainGrid} spacing={2}>
+                
                 {
                     values.map((v,i)=>(
-                        <Grid key={i} xs={12} sm={4} md={4} item>
+                        <Grid key={i} xs={12} sm={6} md={6} justify="center"  item>
                         {/* new Date(totalDetails.lastUpdate).toDateString() */}
                             <CardDet classes={classes} name={capFirstLe(keys[i])} date={new Date(totalDetails.lastUpdate).toDateString()} value={v} />
                         </Grid>

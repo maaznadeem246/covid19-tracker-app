@@ -1,4 +1,5 @@
 export const dataReader = (func, ...d) => {
+    console.log(...d)
     // keep data in a local variable so we can synchronously request it later
     let data;
     // keep track of progress and errors

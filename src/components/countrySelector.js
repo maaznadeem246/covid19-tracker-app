@@ -13,13 +13,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CountrySelector({ countryReader}){
-    const [country, setCountry] =  useState('all');
+export default function CountrySelector({ countryReader,handleChange,country }){
+    
 
     const classes = useStyles();
-    const handleChange = (event) => {
-        setCountry(event.target.value);
-    };
+   
 
     const countries = countryReader()
     

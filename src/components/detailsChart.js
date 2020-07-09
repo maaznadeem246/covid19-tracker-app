@@ -1,33 +1,50 @@
 import React from "react"
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import {Line} from "react-chartjs-2"
+
+const useStyles = makeStyles({
+    root: {
+        padding: '20px 5px 15px 5px',
+    },
+});
+
+
 const Chart = ({ dailyDateReader}) => {
-    const chartDetails = dailyDateReader()
+    const chartDetail = dailyDateReader()
+    let chartDetails = chartDetail ? chartDetail : {cases:[],deaths:[],recovered:[]}
     console.log(chartDetails)
+
+    const classes = useStyles();
     const LineChart = (
         <Line 
+            options={{
 
+            }}
             data={{
                 labels: Object.keys(chartDetails.cases),
                 datasets:[{
                     data: Object.values(chartDetails.cases),
                     label:'Confirmed',
-                    borderColor:'#3333ff',
+                    borderColor:'rgb(30, 144, 255)',
+                    // backgroundColor:'rgb(30, 144, 255,0.2)',
                     fill:true,
-                }, {
-                        data: Object.values(chartDetails.deaths),
-                        label: 'Deaths',
-                        borderColor: 'red',
-                        backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                        fill: true,
-                    }
-                    , {
+                    pointStyle: 'line',
+                    
+                   
+                } , {
                         data: Object.values(chartDetails.recovered),
                         label: 'Recoverd',
-                        borderColor: 'green',
-                        backgroundColor: 'green',
-                        fill: false,
+                        borderColor: 'rgb(0, 255, 127)',
+                        backgroundColor: 'rgb(0, 255, 127, 0.2)',
+                        fill: true,
                         pointStyle:'line'
+                    }, {
+                        data: Object.values(chartDetails.deaths),
+                        label: 'Deaths',
+                        borderColor: 'rgb(255, 99, 71)',
+                        backgroundColor: 'rgb(255, 99, 71, 0.4)',
+                        fill: true,
+                        pointStyle: 'line'
                     }
                 ]
             }}
@@ -36,7 +53,9 @@ const Chart = ({ dailyDateReader}) => {
 
     return (
         <Grid container justify="center">
-            {LineChart}
+            <Grid xs={11} sm={11} md={10} lg={10} className={classes.root} item >
+                {LineChart}
+            </Grid>
         </Grid>
     )
 }
