@@ -28,9 +28,10 @@ export const getTotalDetails = async (cntry) => {
 
         const response = await fetch(url)
         const responseJson  = await response.json()
-        const { cases, deaths, recovered, updated } = responseJson 
+        const { cases, deaths, recovered, active , updated } = responseJson  
+        console.log(responseJson)
             
-        return { details: { confirmed: cases, deaths, recovered }, lastUpdate: updated}
+        return { details: { confirmed: cases, active, deaths, recovered }, lastUpdate: updated}
     }
     catch (er) {
         return er

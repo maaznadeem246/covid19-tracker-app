@@ -28,33 +28,37 @@ function App() {
     updaterDailyDate(event.target.value)
   };
 
+
+
   return (
     <div >
-      <SuspenseList revealOrder="forwards" >
+
       <Grid container >
         <Grid item justify="center" xs={12}>
           <MainHeading />
         </Grid>
-        <Grid item justify="center"  container xs={12}>
-            <Suspense fallback={<CircularProgress />} >
-            <CountrySelector  country={country} handleChange={handleChange} countryReader={countryReader} />
-          </Suspense>
-        </Grid>
-        <Grid item justify="center" container>
-          <Grid item justify="center" container xs={12} sm={12} md={5} lg={5}>
+        <SuspenseList revealOrder="forwards" >
+            <Grid item justify="center"  container xs={12}>
               <Suspense fallback={<CircularProgress />} >
-              <DetailsCards  totalDetailsReader={totalDetailsReader} />
-            </Suspense>
-          </Grid>
-          <Grid item justify="center" container xs={12} sm={12} md={7} lg={7}>
-              <Suspense fallback={<CircularProgress />} >
-              <DetailsChart dailyDateReader={dailyDateReader} />
-            </Suspense>
-          </Grid>  
-        </Grid>
-        
+                <CountrySelector  country={country} handleChange={handleChange} countryReader={countryReader} />
+              </Suspense>
+            </Grid>
+            <Grid item justify="center" container>
+              <Grid item justify="center" container xs={12} sm={12} md={5} lg={5}>
+                <Suspense fallback={<CircularProgress />} >
+                  <DetailsCards country={country}  totalDetailsReader={totalDetailsReader} />
+                </Suspense>
+              </Grid>
+              <Grid item justify="center" container xs={12} sm={12} md={7} lg={7}>
+                <Suspense fallback={<CircularProgress />} >
+                  <DetailsChart dailyDateReader={dailyDateReader} />
+                </Suspense>
+              </Grid>  
+            </Grid>
+        </SuspenseList>
+ 
       </Grid>
-      </SuspenseList>
+
     </div>
   );
 }

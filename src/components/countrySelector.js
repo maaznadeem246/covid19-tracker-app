@@ -47,10 +47,10 @@ export default function CountrySelector({ countryReader,handleChange,country }){
                 onChange={handleChange}
                 className={classes.selectCountry}
             >
-                <MenuItem  value="all">All</MenuItem>
+                <MenuItem  value="all">Global</MenuItem>
                 
                 {countries.map(v=>(
-                    <MenuItem className={classes.selectCountry} value={v.iso2}>{v.name}</MenuItem>
+                    <MenuItem className={classes.selectCountry} name={v.name} value={v.iso2}>{v.name}</MenuItem>
                 ))}
             </Select>
         </FormControl>
