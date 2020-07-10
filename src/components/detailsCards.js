@@ -7,9 +7,10 @@ const useStyles = makeStyles((theme)=>({
         padding:'20px 10px 10px 10px',
  
         [theme.breakpoints.down('sm')]: {
-            width: '80%',
+            width: '100%',
             margin:'auto',
-            paddingTop:'10px'
+            padding:0,
+            paddingTop: '10px'
         },
         [theme.breakpoints.between('sm', 'md')]: {
         width: '100%',
@@ -18,6 +19,11 @@ const useStyles = makeStyles((theme)=>({
     root:{
         boxShadow: theme.shadows[3],
         borderRadius:7,
+        margin:'auto',
+        textAlign: 'center',
+        [theme.breakpoints.only('xs')]: {
+                width:'90%'
+        },
     },
     roott: {
         margin:'auto',
@@ -32,6 +38,25 @@ const useStyles = makeStyles((theme)=>({
     },
     title: {
         fontSize: 16,
+        [theme.breakpoints.down('sm')]: {
+          
+        },
+    },
+    casesNumber:{
+        paddingBottom:4,
+        [theme.breakpoints.down('sm')]: {
+            fontSize:'1.3rem',
+        },
+    },
+    mainTitle:{
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 20,
+        },
+    },
+    date:{
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '0.9rem',
+        },
     },
     pos: {
         marginBottom: 12,
@@ -49,7 +74,7 @@ const CardDet = ({classes, name, value, date}) => (
             <Typography className={classes.title} color="textSecondary" gutterBottom>
                 {name}
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography className={classes.casesNumber} variant="h5" component="h2">
                 <CountUp 
                     start={0}
                     end={value}
@@ -58,7 +83,7 @@ const CardDet = ({classes, name, value, date}) => (
                     separator=","
                 />
             </Typography>
-            <Typography>
+            <Typography className={classes.date}>
                 {date}
             </Typography>
         </CardContent>
@@ -82,13 +107,13 @@ const DetailsCard = ({ totalDetailsReader}) => {
         <CardContent>
             <Grid container justify="center" className={classes.mainGrid} spacing={3}>
                 <Grid justify="center" item  container  xs={12} sm={12} md={12} lg={12}>
-                    <Typography gutterBottom justify="center" variant="h5" component="h2">
+                    <Typography gutterBottom className={classes.mainTitle} justify="center" variant="h5" component="h2">
                              Covid19 Cases Statistics
                     </Typography>
                 </Grid>
                 {
                     values.map((v,i)=>(
-                        <Grid key={i} xs={12} sm={6} md={6} justify="center"  item>
+                        <Grid key={i} xs={12} sm={3}  md={6} justify="center"  item>
                         {/* new Date(totalDetails.lastUpdate).toDateString() */}
                             <CardDet classes={classes} name={capFirstLe(keys[i])} date={new Date(totalDetails.lastUpdate).toDateString()} value={v} />
                         </Grid>
